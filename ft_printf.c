@@ -3,16 +3,29 @@
 #include <unistd.h>
 #include <stdlib.h> // Añadir esta línea
 
-#define F_SPEC "csidpuxX"
+#define F_SPEC "cs" //idpuxX"
 
 int	ft_putchar(char *s)
 {
-	if (*s != '\0')
+	if (s && *s != '\0')
 	{
 		write(1, s, 1);
 		return (1);
 	}
 	return (0);
+}
+int ft_putstr(char *c)
+{
+	int	len;
+
+	len = 0;
+	while (*c != '\0')
+	{
+		ft_putchar(c);
+		c++;
+		len++;
+	}
+	return (len);
 }
 
 char	ft_strchr(const char *s, int c)
@@ -28,15 +41,28 @@ char	ft_strchr(const char *s, int c)
 	return (0);
 }
 
-int	f_selector(va_list args, char *format)
+int	f_selector(va_list *args, const char *format)
 {
+	char	c;
+	char	*s;
+
 	if (format[1] == 'c')
 	{
-		char c = (char)va_arg(args, int);
-		write(1, &c, 1);
-		return 1;
+		c = (char)va_arg(*args, int);
+		return (ft_putchar(&c));
+	} 
+	else if (format[1] == 's')
+	{
+		s = va_arg(*args, char *);
+		printf("%c", *s);
+		return (ft_putstr(s));
 	}
-	return 0;
+/* 	else if (format[1] == d)
+	{
+		*c = (char)va_arg(args, int);
+		return ()
+	} */
+	return (0);
 }
 
 int	ft_printf(char *f, ...)
@@ -48,11 +74,9 @@ int	ft_printf(char *f, ...)
 	count_char = 0;
 	while (*f)
 	{
-/* 		if (*f == '%' &&  !f[1])
-			exit(1); */
 		if (*f == '%' && f[1] == ft_strchr(F_SPEC, f[1]) && f[1])
 		{
-			count_char += f_selector(args, f);
+			count_char += f_selector(&args, f);
 			f += 2;
 		}
 		else if (*f == '%' && f[1] == '%')
@@ -60,8 +84,11 @@ int	ft_printf(char *f, ...)
 			count_char += ft_putchar(f);
 			f += 2;
 		}
-		count_char += ft_putchar(f);
-		f++;
+		else
+		{
+			count_char += ft_putchar(f);
+			f++;
+		}
 	}
 	va_end(args);
 	return (count_char);
@@ -72,7 +99,7 @@ int	main(void)
 	int	number_of_char;
 	// int	number_of_char_2;
 
-	number_of_char = ft_printf("Hola%c", '!');
+	number_of_char = ft_printf("Hola%c%c%c", '!', '?', '!');
 	printf("\n%i\n", number_of_char);
 
 	// number_of_char_2 = printf("Hola%c%", '!');
