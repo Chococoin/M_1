@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-#define F_SPEC "csdixX" //pu
+#define F_SPEC "csdixXpu"
 
 static int	ft_get_num_length(long n)
 {
@@ -189,6 +189,36 @@ int	dec_to_hex(int decimal, char f)
 	return (len);
 }
 
+int ft_putptr(void *ptr)
+{
+	unsigned long	addr;
+	char			*buffer;
+	int				len;
+	int				started;
+	int				i;
+
+	len = 0;
+	buffer = malloc(sizeof(void *) * 21);
+	buffer[len++] = '0';
+	buffer[len++] = 'x';
+	addr = (unsigned long)ptr;
+	started = 0;
+	i = (sizeof(addr) * 2);
+	while (i >= 0) {
+		int digit = (addr >> (i * 4)) & 0xF;
+		if (digit != 0 || started) {
+			buffer[len++] = get_hex_digit(digit, 'x');
+			started = 1;
+		}
+		i--;
+	}
+	if (!started)
+		buffer[len++] = '0';
+	buffer[len] = '\0';
+	ft_putstr(buffer);
+	return (len);
+}
+
 int	f_selector(va_list *args, const char *format)
 {
 	char	*s;
@@ -205,6 +235,10 @@ int	f_selector(va_list *args, const char *format)
 		return (ft_putnum(va_arg(*args, int)));
 	else if (format[1] == 'x' || format[1] == 'X')
 		return (dec_to_hex(va_arg(*args, int), format[1]));
+	else if (format[1] == 'p')
+		return (ft_putptr(va_arg(*args, void *)));
+	else if (format[1] == 'u')
+		return (1);
 	else
 		s = NULL;
 	free(s);
@@ -242,49 +276,11 @@ int	ft_printf(char *f, ...)
 
 int	main(void)
 {
-	ft_printf("Hexadecimal edge cases:\n");
-	ft_printf("0x%x\n", 0);
-	printf("0x%x\n", 0);
-	ft_printf("0x%x\n", 1);
-	printf("0x%x\n", 1);
-	ft_printf("0x%x\n", 15);
-	printf("0x%x\n", 15);
-	ft_printf("0x%x\n", 16);
-	printf("0x%x\n", 16);
-	ft_printf("0x%x\n", 255);
-	printf("0x%x\n", 255);
-	ft_printf("0x%x\n", 256);
-	printf("0x%x\n", 256);
-	ft_printf("0x%x\n", 4095);
-	printf("0x%x\n", 4095);
-	ft_printf("0x%x\n", 4096);
-	printf("0x%x\n", 4096);
-	ft_printf("0x%x\n", 65535);
-	printf("0x%x\n", 65535);
-	ft_printf("0x%x\n", 65536);
-	printf("0x%x\n", 65536);
-	ft_printf("0x%x\n", -1);
-	printf("0x%x\n", -1);
-	ft_printf("0x%X\n", 0);
-	printf("0x%X\n", 0);
-	ft_printf("0x%X\n", 1);
-	printf("0x%X\n", 1);
-	ft_printf("0x%X\n", 15);
-	printf("0x%X\n", 15);
-	ft_printf("0x%X\n", 16);
-	printf("0x%X\n", 16);
-	ft_printf("0x%X\n", 255);
-	printf("0x%X\n", 255);
-	ft_printf("0x%X\n", 256);
-	printf("0x%X\n", 256);
-	ft_printf("0x%X\n", 4095);
-	printf("0x%X\n", 4095);
-	ft_printf("0x%X\n", 4096);
-	printf("0x%X\n", 4096);
-	ft_printf("0x%X\n", 65535);
-	printf("0x%X\n", 65535);
-	ft_printf("0x%X\n", 65536);
-	printf("0x%X\n", 65536);
-	ft_printf("0x%X\n", -1);
-	printf("0x%X\n", -1);
+	int x = 42;
+	int *ptr = &x;
+
+	printf("Original printf: %p\n", (void *)ptr);
+	ft_printf("Custom ft_printf: %p\n", (void *)ptr);
+
+	return (0);
 }

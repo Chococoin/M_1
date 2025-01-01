@@ -1,0 +1,22 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "type": "cppdbg",
+        "request": "launch",
+        "name": "Launch ft_printf",
+        "program": "${workspaceFolder}/ft_printf",
+        "preLaunchTask": "build ft_printf",
+        "args": [],
+        "stopAtEntry": false,
+        "cwd": "${workspaceFolder}",
+        "environment": [],
+        "externalConsole": false,
+        "MIMode": "lldb",
+      }
+    ],
+    "settings": {
+      "console": "internalConsole",
+      "runInTerminal": true
+    }
+  }

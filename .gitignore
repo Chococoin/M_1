@@ -4,5 +4,3 @@
 *.dSYM/
 .DS_Store
 ft_printf
-launch.json
-tasks.json
