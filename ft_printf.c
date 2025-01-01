@@ -1,9 +1,78 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <unistd.h>
-#include <stdlib.h> // Añadir esta línea
+#include <stdlib.h>
+#include <stdlib.h> // malloc, free
 
-#define F_SPEC "cs" //idpuxX"
+#define F_SPEC "csdp" //puxX"
+
+static int	ft_get_num_length(long n)
+{
+	int		length;
+	long	m;
+
+	length = 0;
+	m = n;
+	if (n < 0)
+		m = -m;
+	while (m >= 1)
+	{
+		m /= 10;
+		length++;
+	}
+	return (length);
+}
+
+static void	ft_freemem(char *bffr, int j)
+{
+	while (j + 1 > 0)
+		free((void *)&bffr[j--]);
+}
+
+static void	ft_fill_chars(char *character, long n, int length)
+{
+	int	i;
+
+	i = 0;
+	if (n < 0)
+		n = -n;
+	if (n == 0)
+		character[0] = '0';
+	while (i < length && n > 0)
+	{
+		character[length -1 - i] = (n % 10) + '0';
+		i++;
+		n /= 10;
+	}
+	character[length] = '\0';
+}
+
+char	*ft_itoa(int n)
+{
+	int		length;
+	char	*character;
+	int		is_negative;
+	long	nbr;
+
+	nbr = n;
+	length = ft_get_num_length(nbr);
+	is_negative = (nbr < 0);
+	if (is_negative)
+		length++;
+	if (nbr == 0)
+		length = 1;
+	character = (char *)malloc(sizeof(char) * (length + 1));
+	if (!character)
+	{
+		ft_freemem(character, length);
+		return (NULL);
+	}
+	ft_fill_chars(character, nbr, length);
+	if (is_negative)
+		character[0] = '-';
+	return (character);
+}
+
 
 int	ft_putchar(char *s)
 {
@@ -41,27 +110,51 @@ char	ft_strchr(const char *s, int c)
 	return (0);
 }
 
+int	ft_putnum(int num)
+{
+	int	len;
+	int	n;
+
+	n = num;
+	len = 0;
+	if (n < 0)
+	{
+		n *= -1;
+		len++;
+	}
+	if (n < 10)
+		++len;
+	while (n >= 10)
+	{
+		n /= 10;
+		len++;
+	}
+	write(1, ft_itoa(num), len);
+	return (len);
+}
+
 int	f_selector(va_list *args, const char *format)
 {
-	char	c;
 	char	*s;
 
-	if (format[1] == 'c')
+ 	if (format[1] == 'c')
 	{
-		c = (char)va_arg(*args, int);
-		return (ft_putchar(&c));
+		s = malloc(sizeof(int));
+		s[0] = (char)va_arg(*args, int);
+		return (ft_putchar(&s[0]));
 	} 
 	else if (format[1] == 's')
 	{
 		s = va_arg(*args, char *);
-		printf("%c", *s);
 		return (ft_putstr(s));
 	}
-/* 	else if (format[1] == d)
+	else if (format[1] == 'd')
 	{
-		*c = (char)va_arg(args, int);
-		return ()
-	} */
+		return (ft_putnum(va_arg(*args, int)));
+	}
+	else
+		s = NULL;
+	free(s);
 	return (0);
 }
 
@@ -99,7 +192,7 @@ int	main(void)
 	int	number_of_char;
 	// int	number_of_char_2;
 
-	number_of_char = ft_printf("Hola%c%c%c", '!', '?', '!');
+	number_of_char = ft_printf("Hola%c %s %d", '!', "mundo", -1000000);
 	printf("\n%i\n", number_of_char);
 
 	// number_of_char_2 = printf("Hola%c%", '!');
