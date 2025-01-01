@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <stdlib.h> // malloc, free
 
-#define F_SPEC "csdp" //puxX"
+#define F_SPEC "csdip" //uxX"
 
 static int	ft_get_num_length(long n)
 {
@@ -116,14 +116,12 @@ int	ft_putnum(int num)
 	int	n;
 
 	n = num;
-	len = 0;
+	len = 1;
 	if (n < 0)
 	{
 		n *= -1;
 		len++;
 	}
-	if (n < 10)
-		++len;
 	while (n >= 10)
 	{
 		n /= 10;
@@ -148,7 +146,7 @@ int	f_selector(va_list *args, const char *format)
 		s = va_arg(*args, char *);
 		return (ft_putstr(s));
 	}
-	else if (format[1] == 'd')
+	else if (format[1] == 'd' || format[1] == 'i')
 	{
 		return (ft_putnum(va_arg(*args, int)));
 	}
@@ -189,12 +187,17 @@ int	ft_printf(char *f, ...)
 
 int	main(void)
 {
-	int	number_of_char;
+	// int	number_of_char;
 	// int	number_of_char_2;
 
-	number_of_char = ft_printf("Hola%c %s %d", '!', "mundo", -1000000);
-	printf("\n%i\n", number_of_char);
-
+	// number_of_char = ft_printf("Hola%c %s %d %i", '!', "mundo", 42, 100000);
+	// printf("\n%i\n", number_of_char);
+	// number_of_char = ft_printf("El número máximo para un int es: %d", 2147483647);
+	// printf("\n%i\n", number_of_char);
+	// number_of_char = 
+	ft_printf("Número mínimo para un int es: %d", -2147483647);
+	// printf("El número mínimo para un int es: %d", -2147483647);
+	// printf("\n%i\n", number_of_char);
 	// number_of_char_2 = printf("Hola%c%", '!');
 	// printf("\n%i\n", number_of_char_2);
 }
