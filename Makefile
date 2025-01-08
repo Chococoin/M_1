@@ -1,4 +1,4 @@
-# Variables
+# VARIABLES
 NAME = libftprintf.a
 SRC_DIR = src
 OBJ_DIR = obj
@@ -8,13 +8,16 @@ INC_DIR = includes
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -I$(INC_DIR) -I$(LIBFT_DIR)
 
-# Fuentes y objetos
-LIBFT_SRCS = $(wildcard $(LIBFT_DIR)/*.c)
+# SOURCE AND OBJECTS
+LIBFT_SRCS = $(LIBFT_DIR)/ft_itoa.c $(LIBFT_DIR)/ft_strchr.c
 LIBFT_OBJS = $(LIBFT_SRCS:$(LIBFT_DIR)/%.c=$(OBJ_DIR)/%.o)
-SRCS = $(wildcard $(SRC_DIR)/*.c)
+SRCS =	$(SRC_DIR)/dec_to_hex.c $(SRC_DIR)/f_selector.c \
+		$(SRC_DIR)/ft_printf.c $(SRC_DIR)/ft_putchar.c \
+		$(SRC_DIR)/ft_putnum.c $(SRC_DIR)/ft_putptr.c \
+		$(SRC_DIR)/ft_putstr.c $(SRC_DIR)/get_hex_digit.c
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
-# Reglas
+# RULES
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJS)
