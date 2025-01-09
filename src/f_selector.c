@@ -6,7 +6,7 @@
 /*   By: glugo-mu <glugo-mu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 18:26:32 by glugo-mu          #+#    #+#             */
-/*   Updated: 2025/01/08 19:36:27 by glugo-mu         ###   ########.fr       */
+/*   Updated: 2025/01/09 15:13:28 by glugo-mu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	f_selector(va_list *args, const char *format)
 	else if (format[1] == 'p')
 		return (ft_putptr(va_arg(*args, void *)));
 	else if (format[1] == 'u')
-		return (1);
+		return (put_unsigned_num(va_arg(*args, unsigned long)));
 	else
 		s = NULL;
 	free(s);
