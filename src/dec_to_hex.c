@@ -6,13 +6,13 @@
 /*   By: glugo-mu <glugo-mu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 21:25:18 by glugo-mu          #+#    #+#             */
-/*   Updated: 2025/01/08 22:22:16 by glugo-mu         ###   ########.fr       */
+/*   Updated: 2025/01/09 15:57:55 by glugo-mu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-static int hex_length(int decimal)
+static int	hex_length(int decimal)
 {
 	int	length;
 
@@ -28,11 +28,11 @@ static int hex_length(int decimal)
 static int	cal_current_power(int i)
 {
 	int	current_power;
-	int j;
+	int	j;
 
 	current_power = 1;
 	j = 0;
-	while ( j < i)
+	while (j < i)
 	{
 		current_power *= 16;
 		j++;

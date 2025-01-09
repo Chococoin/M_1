@@ -6,7 +6,7 @@
 /*   By: glugo-mu <glugo-mu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 22:34:53 by glugo-mu          #+#    #+#             */
-/*   Updated: 2025/01/09 15:47:43 by glugo-mu         ###   ########.fr       */
+/*   Updated: 2025/01/09 19:02:49 by glugo-mu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,49 @@
 
 int main(void)
 {
-	int num = 1;
-	int num2;
-	// num = ft_printf("Hola %s", "mundo");
-	// ft_printf("\n%d\n", num);
-	// num = printf("Hola %s", "mundo");
-	
-	num2 = ft_printf("%u", -255555);
-	ft_printf("%d\n", num2);
-	num2 = printf("%u\n", -255555);
-	printf("%d\n", num2);
-	printf("%d\n", num);
-	printf("%d\n", num);
-	printf("%d\n", num);
+	int num_char;
+	num_char = ft_printf("%c", 'A');
+	printf("\nNumber of characters printed: %d\n", num_char);
+	num_char = printf("%c", 'A');
+	printf("\nNumber of characters printed: %d\n", num_char);
+
+	num_char = ft_printf("%s", "This is a string");
+	printf("\nNumber of characters printed: %d\n", num_char);
+	num_char = printf("%s", "This is a string");
+	printf("\nNumber of characters printed: %d\n", num_char);
+
+	num_char = ft_printf("%d", 42);
+	printf("\nNumber of characters printed: %d\n", num_char);
+	num_char = printf("%d", 42);
+	printf("\nNumber of characters printed: %d\n", num_char);
+
+	num_char = ft_printf("%i", -42);
+	printf("\nNumber of characters printed: %d\n", num_char);
+	num_char = printf("%i", -42);
+	printf("\nNumber of characters printed: %d\n", num_char);
+
+	num_char = ft_printf("%d", INT_MAX);
+	printf("\nNumber of characters printed: %d\n", num_char);
+	num_char = printf("%d", INT_MAX);
+	printf("\nNumber of characters printed: %d\n", num_char);
+
+	num_char = ft_printf("%d", INT_MIN);
+	printf("\nNumber of characters printed: %d\n", num_char);
+	num_char = printf("%d", INT_MIN);
+	printf("\nNumber of characters printed: %d\n", num_char);
+
+	num_char = ft_printf("%i", -42);
+	printf("\nNumber of characters printed: %d\n", num_char);
+	num_char = printf("%i", -42);
+	printf("\nNumber of characters printed: %d\n", num_char);
+
+	num_char = ft_printf("%i", INT_MAX);
+	printf("\nNumber of characters printed: %d\n", num_char);
+	num_char = ft_printf("%i", INT_MAX);
+	printf("\nNumber of characters printed: %d\n", num_char);
+
+	num_char = ft_printf("%i", INT_MIN);
+	printf("\nNumber of characters printed: %d\n", num_char);
+	num_char = printf("%i", INT_MIN);
+	printf("\nNumber of characters printed: %d\n", num_char);
 }
