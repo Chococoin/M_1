@@ -6,11 +6,11 @@
 /*   By: glugo-mu <glugo-mu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 19:32:52 by glugo-mu          #+#    #+#             */
-/*   Updated: 2025/01/08 22:32:42 by glugo-mu         ###   ########.fr       */
+/*   Updated: 2025/01/09 15:41:35 by glugo-mu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libftprintf.h"
 
 int	ft_putchar(const char *s)
 {

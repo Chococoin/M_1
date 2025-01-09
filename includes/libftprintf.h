@@ -6,7 +6,7 @@
 /*   By: glugo-mu <glugo-mu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 16:52:50 by glugo-mu          #+#    #+#             */
-/*   Updated: 2025/01/08 22:32:30 by glugo-mu         ###   ########.fr       */
+/*   Updated: 2025/01/09 15:02:59 by glugo-mu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ int ft_putnum(int num);
 int ft_putptr(void *ptr);
 int	get_hex_digit(int digit, char f);
 int	dec_to_hex(int decimal, char f);
+int put_unsigned_num(unsigned int num);
 
 #endif

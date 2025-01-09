@@ -6,7 +6,7 @@
 /*   By: glugo-mu <glugo-mu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 15:17:00 by glugo-mu          #+#    #+#             */
-/*   Updated: 2024/12/08 16:20:44 by glugo-mu         ###   ########.fr       */
+/*   Updated: 2025/01/09 15:24:37 by glugo-mu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,26 @@ char	*ft_itoa(int n)
 	ft_fill_chars(character, nbr, length);
 	if (is_negative)
 		character[0] = '-';
+	return (character);
+}
+
+char	*ft_uitoa(unsigned int n)
+{
+	int		length;
+	char	*character;
+	long	nbr;
+
+	nbr = n;
+	length = ft_get_num_length(nbr);
+	if (nbr == 0)
+		length = 1;
+	character = (char *)malloc(sizeof(char) * (length + 1));
+	if (!character)
+	{
+		ft_freemem(character, length);
+		return (NULL);
+	}
+	ft_fill_chars(character, nbr, length);
 	return (character);
 }
 

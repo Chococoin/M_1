@@ -6,11 +6,11 @@
 /*   By: glugo-mu <glugo-mu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 21:19:43 by glugo-mu          #+#    #+#             */
-/*   Updated: 2025/01/08 21:23:08 by glugo-mu         ###   ########.fr       */
+/*   Updated: 2025/01/09 15:40:20 by glugo-mu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
 int ft_putnum(int num)
 {
