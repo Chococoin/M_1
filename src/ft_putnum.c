@@ -6,7 +6,7 @@
 /*   By: glugo-mu <glugo-mu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 21:19:43 by glugo-mu          #+#    #+#             */
-/*   Updated: 2025/01/09 15:58:50 by glugo-mu         ###   ########.fr       */
+/*   Updated: 2025/01/09 20:55:05 by glugo-mu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_putnum(int num)
 {
-	int	len;
-	int	n;
+	int		len;
+	long	n;
 
 	n = num;
 	len = 1;
