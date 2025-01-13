@@ -6,7 +6,7 @@
 /*   By: glugo-mu <glugo-mu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 21:47:40 by glugo-mu          #+#    #+#             */
-/*   Updated: 2025/01/13 19:02:07 by glugo-mu         ###   ########.fr       */
+/*   Updated: 2025/01/13 19:11:00 by glugo-mu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,12 @@ static void	dec_to_hex_cal_ptr(int len, unsigned long dec, char *hex, char f_s)
 		current_power = cal_current_power(i);
 		digit = dec / current_power;
 		dec -= digit * current_power;
-		hex[len - 1 - i] = get_hex_digit(digit, f_s);
+		hex[i] = get_hex_digit(digit, f_s);
 		i--;
 	}
+	hex[0] = '0';
+	hex[1] = 'x';
+	hex[len + 1] = '\0';
 }
 
 int	ft_putptr(void *ptr)
@@ -71,9 +74,6 @@ int	ft_putptr(void *ptr)
 	len = ptr_length((unsigned long)ptr);
 	hex = malloc(sizeof(char) * (len + 1));
 	dec_to_hex_cal_ptr(len, (unsigned long)ptr, hex, 'x');
-	hex[0] = '0';
-	hex[1] = 'x';
-	hex[len + 1] = '\0';
 	ft_putstr(hex);
 	free(hex);
 	return (len);

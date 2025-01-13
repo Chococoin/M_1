@@ -6,7 +6,7 @@
 /*   By: glugo-mu <glugo-mu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 21:25:18 by glugo-mu          #+#    #+#             */
-/*   Updated: 2025/01/13 14:13:36 by glugo-mu         ###   ########.fr       */
+/*   Updated: 2025/01/13 18:55:44 by glugo-mu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ static int	hex_length(int decimal)
 		d /= 16;
 		length++;
 	}
+	if (length == 0)
+		length++;
 	return (length);
 }
 
@@ -42,7 +44,7 @@ static int	cal_current_power(int i)
 	return (current_power);
 }
 
-void	dec_to_hex_cal(int len, unsigned int decimal, char *hex, char f_s)
+static void	dec_to_hex_cal(int len, unsigned int decimal, char *hex, char f_s)
 {
 	int				i;
 	int				current_power;

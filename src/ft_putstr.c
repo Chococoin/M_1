@@ -6,7 +6,7 @@
 /*   By: glugo-mu <glugo-mu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 19:55:28 by glugo-mu          #+#    #+#             */
-/*   Updated: 2025/01/08 22:23:52 by glugo-mu         ###   ########.fr       */
+/*   Updated: 2025/01/13 19:19:54 by glugo-mu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ int	ft_putstr(char *c)
 {
 	int	len;
 
+	if (c == NULL)
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}	
 	len = 0;
 	while (*c != '\0')
 	{
