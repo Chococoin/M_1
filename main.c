@@ -6,7 +6,7 @@
 /*   By: glugo-mu <glugo-mu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 22:34:53 by glugo-mu          #+#    #+#             */
-/*   Updated: 2025/01/13 19:23:52 by glugo-mu         ###   ########.fr       */
+/*   Updated: 2025/01/13 20:54:48 by glugo-mu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,8 @@ int main(void)
 
 	num_char = ft_printf("%");
     printf("\nNumber of characters printed: %d\n", num_char);
-    num_char = printf("%");
-    printf("\nNumber of characters printed: %d\n", num_char); 
+    // num_char = printf("%");
+    // printf("\nNumber of characters printed: %d\n", num_char); 
 
     // Case 1: Pasar un puntero nulo a %s
     char *str1 = NULL;
@@ -104,7 +104,6 @@ int main(void)
 
     // Case 2: Usar %p con un puntero nulo
     void *ptr1 = NULL;
-    char *str1 = NULL;
     printf("Case 2: %p\n", ptr1); // Imprime "(nil)" en algunas implementaciones
     ft_printf("Case 2: %p\n", ptr1);
 
@@ -130,7 +129,7 @@ int main(void)
     printf("Case 6: %s\n", ex.name); // Imprime "(null)"
     ft_printf("Case 6: %s\n", ex.name); // Imprime "(null)"
 
-    // Case 7: Address of un puntero válido
+    // Case 7: Address of a valid pointer
     int a = 42;
     int *ptr3 = &a;
     printf("Case 7: Address of ptr3 -> %p\n", (void *)ptr3); // Address of 'a'
