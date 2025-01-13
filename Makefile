@@ -15,7 +15,7 @@ SRCS =	$(SRC_DIR)/dec_to_hex.c $(SRC_DIR)/f_selector.c \
 		$(SRC_DIR)/ft_printf.c $(SRC_DIR)/ft_putchar.c \
 		$(SRC_DIR)/ft_putnum.c $(SRC_DIR)/ft_putptr.c \
 		$(SRC_DIR)/ft_putstr.c $(SRC_DIR)/get_hex_digit.c \
-		$(SRC_DIR)/put_unsigned_num.c
+		$(SRC_DIR)/put_unsigned_num.c $(SRC_DIR)/printf_error.c
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 # RULES
