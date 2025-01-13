@@ -6,13 +6,13 @@
 /*   By: glugo-mu <glugo-mu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 21:47:40 by glugo-mu          #+#    #+#             */
-/*   Updated: 2025/01/08 22:34:09 by glugo-mu         ###   ########.fr       */
+/*   Updated: 2025/01/13 14:20:47 by glugo-mu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int ft_putptr(void *ptr)
+int	ft_putptr(void *ptr)
 {
 	unsigned long	addr;
 	char			*buffer;

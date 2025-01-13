@@ -6,7 +6,7 @@
 /*   By: glugo-mu <glugo-mu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 21:25:18 by glugo-mu          #+#    #+#             */
-/*   Updated: 2025/01/09 15:57:55 by glugo-mu         ###   ########.fr       */
+/*   Updated: 2025/01/13 14:13:36 by glugo-mu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 static int	hex_length(int decimal)
 {
-	int	length;
+	int				length;
+	unsigned int	d;
 
 	length = 0;
-	while (decimal > 0)
+	d = decimal;
+	while (d > 0)
 	{
-		decimal /= 16;
+		d /= 16;
 		length++;
 	}
 	return (length);
@@ -40,27 +42,34 @@ static int	cal_current_power(int i)
 	return (current_power);
 }
 
-int	dec_to_hex(int decimal, char f)
+void	dec_to_hex_cal(int len, unsigned int decimal, char *hex, char f_s)
 {
-	int				len;
-	char			*hexadecimal;
 	int				i;
 	int				current_power;
 	unsigned int	digit;
 
-	len = hex_length(decimal);
-	hexadecimal = malloc(sizeof(char) * (len + 1));
-	hexadecimal[len] = '\0';
+	digit = decimal;
 	i = len - 1;
 	while (i >= 0)
 	{
 		current_power = cal_current_power(i);
 		digit = decimal / current_power;
 		decimal -= digit * current_power;
-		hexadecimal[len - 1 - i] = get_hex_digit(digit, f);
+		hex[len - 1 - i] = get_hex_digit(digit, f_s);
 		i--;
 	}
-	ft_putstr(hexadecimal);
-	free(hexadecimal);
+}
+
+int	dec_to_hex(int decimal, char f_s)
+{
+	int				len;
+	char			*hex;
+
+	len = hex_length(decimal);
+	hex = malloc(sizeof(char) * (len + 1));
+	hex[len] = '\0';
+	dec_to_hex_cal(len, decimal, hex, f_s);
+	ft_putstr(hex);
+	free(hex);
 	return (len);
 }
