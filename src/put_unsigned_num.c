@@ -6,7 +6,7 @@
 /*   By: glugo-mu <glugo-mu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 23:41:59 by glugo-mu          #+#    #+#             */
-/*   Updated: 2025/01/09 16:02:28 by glugo-mu         ###   ########.fr       */
+/*   Updated: 2025/02/12 15:40:51 by glugo-mu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,14 @@
 
 int	put_unsigned_num(unsigned int num)
 {
-	int				len;
-	unsigned int	n;
+	int		len;
+	char	*num_str;
 
-	n = num;
-	len = 1;
-	while (n >= 10)
-	{
-		n /= 10;
-		len++;
-	}
-	write(1, ft_uitoa(num), len);
+	num_str = ft_uitoa(num);
+	if (!num_str)
+		return (0);
+	len = ft_strlen(num_str);
+	write(1, num_str, len);
+	free(num_str);
 	return (len);
 }

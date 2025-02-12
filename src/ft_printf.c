@@ -6,7 +6,7 @@
 /*   By: glugo-mu <glugo-mu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 16:46:23 by glugo-mu          #+#    #+#             */
-/*   Updated: 2025/01/08 20:47:11 by glugo-mu         ###   ########.fr       */
+/*   Updated: 2025/02/12 16:45:00 by glugo-mu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ int	ft_printf(const char *f, ...)
 		}
 		else if (*f == '%' && f[1] == '%')
 		{
-			count_char += ft_putchar(f);
+			count_char += ft_putchar(*f);
 			f += 2;
 		}
 		else
 		{
-			count_char += ft_putchar(f);
+			count_char += ft_putchar(*f);
 			f++;
 		}
 	}

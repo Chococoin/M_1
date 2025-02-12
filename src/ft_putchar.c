@@ -6,18 +6,14 @@
 /*   By: glugo-mu <glugo-mu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 19:32:52 by glugo-mu          #+#    #+#             */
-/*   Updated: 2025/01/09 15:41:35 by glugo-mu         ###   ########.fr       */
+/*   Updated: 2025/02/12 16:43:39 by glugo-mu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_putchar(const char *s)
+int	ft_putchar(char c)
 {
-	if (s && *s != '\0')
-	{
-		write(1, s, 1);
-		return (1);
-	}
-	return (0);
+	write(1, &c, 1);
+	return (1);
 }

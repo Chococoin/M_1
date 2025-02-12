@@ -6,7 +6,7 @@
 /*   By: glugo-mu <glugo-mu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 15:17:00 by glugo-mu          #+#    #+#             */
-/*   Updated: 2025/01/09 15:24:37 by glugo-mu         ###   ########.fr       */
+/*   Updated: 2025/02/12 20:13:25 by glugo-mu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ static int	ft_get_num_length(long n)
 	int		length;
 	long	m;
 
-	length = 0;
+	if (n == 0)
+		length = 1;
+	else
+		length = 0;
 	m = n;
 	if (n < 0)
 		m = -m;
@@ -29,11 +32,11 @@ static int	ft_get_num_length(long n)
 	return (length);
 }
 
-static void	ft_freemem(char *bffr, int j)
-{
-	while (j + 1 > 0)
-		free((void *)&bffr[j--]);
-}
+// static void	ft_freemem(char *bffr, int j)
+// {
+// 	while (j + 1 > 0)
+// 		free((void *)&bffr[j--]);
+// }
 
 static void	ft_fill_chars(char *character, long n, int length)
 {
@@ -65,14 +68,9 @@ char	*ft_itoa(int n)
 	is_negative = (nbr < 0);
 	if (is_negative)
 		length++;
-	if (nbr == 0)
-		length = 1;
 	character = (char *)malloc(sizeof(char) * (length + 1));
 	if (!character)
-	{
-		ft_freemem(character, length);
 		return (NULL);
-	}
 	ft_fill_chars(character, nbr, length);
 	if (is_negative)
 		character[0] = '-';
@@ -91,10 +89,7 @@ char	*ft_uitoa(unsigned int n)
 		length = 1;
 	character = (char *)malloc(sizeof(char) * (length + 1));
 	if (!character)
-	{
-		ft_freemem(character, length);
 		return (NULL);
-	}
 	ft_fill_chars(character, nbr, length);
 	return (character);
 }

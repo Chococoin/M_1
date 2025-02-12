@@ -6,7 +6,7 @@
 /*   By: glugo-mu <glugo-mu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 16:52:50 by glugo-mu          #+#    #+#             */
-/*   Updated: 2025/01/13 21:03:14 by glugo-mu         ###   ########.fr       */
+/*   Updated: 2025/02/12 16:43:59 by glugo-mu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # define F_SPEC "csdixXpu"
 
 int	f_selector(va_list *args, const char *format);
-int	ft_putchar(const char *s);
+int	ft_putchar(const char s);
 int	ft_putstr(char *c);
 int	ft_printf(const char *format, ...);
 int	ft_putnum(int num);

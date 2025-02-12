@@ -6,7 +6,7 @@
 /*   By: glugo-mu <glugo-mu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 21:19:43 by glugo-mu          #+#    #+#             */
-/*   Updated: 2025/01/09 20:55:05 by glugo-mu         ###   ########.fr       */
+/*   Updated: 2025/02/12 15:45:49 by glugo-mu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,13 @@
 int	ft_putnum(int num)
 {
 	int		len;
-	long	n;
+	char	*num_str;
 
-	n = num;
-	len = 1;
-	if (n < 0)
-	{
-		n *= -1;
-		len++;
-	}
-	while (n >= 10)
-	{
-		n /= 10;
-		len++;
-	}
+	num_str = ft_itoa(num);
+	if (!num_str)
+		return (0);
+	len = ft_strlen(num_str);
 	write(1, ft_itoa(num), len);
+	free(num_str);
 	return (len);
 }
