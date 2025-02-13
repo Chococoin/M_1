@@ -6,7 +6,7 @@
 /*   By: glugo-mu <glugo-mu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 21:19:43 by glugo-mu          #+#    #+#             */
-/*   Updated: 2025/02/12 15:45:49 by glugo-mu         ###   ########.fr       */
+/*   Updated: 2025/02/13 19:23:20 by glugo-mu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_putnum(int num)
 	if (!num_str)
 		return (0);
 	len = ft_strlen(num_str);
-	write(1, ft_itoa(num), len);
+	write(1, num_str, len);
 	free(num_str);
 	return (len);
 }
