@@ -6,7 +6,7 @@
 /*   By: glugo-mu <glugo-mu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 16:46:23 by glugo-mu          #+#    #+#             */
-/*   Updated: 2025/02/12 16:45:00 by glugo-mu         ###   ########.fr       */
+/*   Updated: 2025/02/13 21:11:04 by glugo-mu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ int	ft_printf(const char *f, ...)
 	count_char = 0;
 	while (*f)
 	{
-		if (*f == '%' && ft_strchr(F_SPEC, f[1]) != NULL)
+		if (*f == '%')
 		{
-			count_char += f_selector(&args, f);
-			f += 2;
-		}
-		else if (*f == '%' && f[1] == '%')
-		{
-			count_char += ft_putchar(*f);
+			if (f[1] == ' ' || f[1] == '\0')
+				return (count_char + printf_error());
+			if (ft_strchr(F_SPEC, f[1]) != NULL)
+				count_char += f_selector(&args, f);
+			else if (f[1] == '%')
+				count_char += ft_putchar(*f);
 			f += 2;
 		}
 		else
